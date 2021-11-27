@@ -116,7 +116,7 @@ class nhentai:
 
         return self.comic_set
 
-    def download(self,path_: str = f"./", thumbnail: bool = False):
+    def download(self,path_: str = "./", thumbnail: bool = False):
         """
         Download and save the image to local directory
 
