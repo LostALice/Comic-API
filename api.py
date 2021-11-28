@@ -6,21 +6,27 @@ from bs4 import BeautifulSoup
 from os import path,makedirs
 
 class nhentai:
-    def __init__(self):
-        self.code = None
-        self.info = None
-        self.title = None
-        self.sub_title = None
-        self.parodies = None
-        self.tag = None
-        self.artists = None
-        self.groups = None
-        self.languages = None
-        self.categories = None
-        self.pages = None
-        self.uploaded = None
-        self.popular = None
-        self.comics = None
+
+    def __init__(self,*args):
+        if len(args) > 1:
+            raise BaseException("One code only")
+        elif len(args) == 0 :
+            self.code = None
+            self.info = None
+            self.title = None
+            self.sub_title = None
+            self.parodies = None
+            self.tags = None
+            self.artists = None
+            self.groups = None
+            self.languages = None
+            self.categories = None
+            self.pages = None
+            self.uploaded = None
+        else:
+            self.code = args[0]
+            nhentai.infos(self,self.code)
+
 
     def infos(self, code: int = None):
         """
@@ -32,19 +38,19 @@ class nhentai:
         self.info = All information
 
         {
-            "title" " "Title"
-            "parodies" : "Parodies"
-            "tag" : "Tags"
-            "artists" : "Artists"
-            "groups" : "Groups"
-            "languages" : "Languages"
-            "categories" : "Categories"
-            "pages" : "Pages"
-            "code" : "Code"
+            "Title" : "Title",
+            "Sub_Title" : "Sub_Title",
+            "Parodies" : "Parodies",
+            "Tags" : "Tags",
+            "Artists" : "Artists",
+            "Groups" : "Groups",
+            "Languages" : "Languages",
+            "Categories" : "Categories",
+            "Pages" : "Pages",
+            "Code" : "Code"
         }
 
         """
-
         try:
             self.code = int(code)
         except Exception as e:
@@ -91,7 +97,7 @@ class nhentai:
         self.title = json["Title"]
         self.sub_title = json["Sub_Title"]
         self.parodies = json["Parodies"]
-        self.tag = json["Tags"]
+        self.tags = json["Tags"]
         self.artists = json["Artists"]
         self.groups = json["Groups"]
         self.languages = json["Languages"]
