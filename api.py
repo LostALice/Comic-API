@@ -182,7 +182,7 @@ class nhentai:
         Get todays popular doujinshi
 
         Returns:
-            list: self.popular
+            list: [todays popular code]
         """
 
         soup = BeautifulSoup(requests.get("https://nhentai.net").text, "lxml")
@@ -195,7 +195,7 @@ class nhentai:
         Get the latest doujinshi
 
         Returns:
-            int: self.latest
+            int: latest doujinshi code
         """
 
         soup = BeautifulSoup(requests.get("https://nhentai.net").text, "lxml")
