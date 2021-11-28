@@ -170,11 +170,11 @@ class nhentai:
 
         img = self.image(code)
         for i in img:
-            a = i.replace("/", "-")
+            name = i.replace("/", "-")
             if not path_.endswith("/"): path_ += "/"
             if not path.exists(f"{path_}{self.code}"): makedirs(f"{path_}{self.code}")
 
-            with open(f"{path_}{self.code}/{a}", "wb") as f:
+            with open(f"{path_}{self.code}/{name}", "wb") as f:
                 f.write(base64.b64decode(img[i]))
 
     def popular_now(self) -> list:
