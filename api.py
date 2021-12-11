@@ -193,8 +193,8 @@ class nhentai:
 
         soup = BeautifulSoup(requests.get("https://nhentai.net").text, "lxml")
         page = [p for p in soup.find_all("a", attrs={"class": "cover"})[:5]]
-        self.popular = [p.attrs["href"].replace("/","").replace("g","") for p in page]
-        return self.popular
+        popular = [p.attrs["href"].replace("/","").replace("g","") for p in page]
+        return popular
 
     def latest(self) -> int:
         """
@@ -206,5 +206,5 @@ class nhentai:
 
         soup = BeautifulSoup(requests.get("https://nhentai.net").text, "lxml")
         page = soup.find_all("a", attrs={"class": "cover"})[5]
-        self.latest = int(page.attrs["href"].replace("/","").replace("g",""))
-        return self.latest
+        latest = int(page.attrs["href"].replace("/","").replace("g",""))
+        return latest
